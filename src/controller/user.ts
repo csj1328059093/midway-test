@@ -22,7 +22,12 @@ export class APIController {
 
   @Post('/user/login')
   @Validate()
-  async loginUser(@Body() body: UserLoginDTO) {
+  async loginUser(
+    @Body() body: UserLoginDTO
+    // @Body('username') username: string,
+    // @Body('password') password: string
+  ) {
+    // console.log(username, password);
     const ds = await dbConnection;
     const db = await ds.getRepository(UserEntity);
     const saveUser = new UserEntity();
